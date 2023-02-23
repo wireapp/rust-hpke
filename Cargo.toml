@@ -15,10 +15,12 @@ categories = ["cryptography", "no-std"]
 # "p256" enables the use of ECDH-NIST-P256 as a KEM
 # "p384" enables the use of ECDH-NIST-P384 as a KEM
 # "x25519" enables the use of the X25519 as a KEM
+# "x448" enables the use of the X448 as a KEM
 default = ["alloc", "p256", "x25519"]
 x25519 = ["dep:x25519-dalek"]
 p384 = ["dep:p384"]
 p256 = ["dep:p256"]
+x448 = ["dep:ed448-goldilocks"]
 # Include serde Serialize/Deserialize impls for all relevant types
 serde_impls = ["serde", "generic-array/serde"]
 # Include allocating methods like open() and seal()
@@ -42,6 +44,7 @@ sha2 = { version = "0.10", default-features = false }
 serde = { version = "1.0", default-features = false, optional = true }
 subtle = { version = "2.4", default-features = false }
 zeroize = { version = "1", default-features = false, features = ["zeroize_derive"] }
+ed448-goldilocks = { version = "0.8", features = ["zeroize"], optional = true }
 
 [dependencies.x25519-dalek]
 version = "2.0.0-pre.1"

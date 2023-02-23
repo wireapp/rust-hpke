@@ -83,3 +83,8 @@ pub use ecdh_nistp::p384::DhP384;
 pub(crate) mod x25519;
 #[cfg(feature = "x25519")]
 pub use x25519::X25519;
+#[cfg(feature = "x448")]
+pub(crate) mod x448;
+#[cfg(feature = "x448")]
+pub use x448::X448;
+

@@ -237,6 +237,14 @@ mod tests {
         test_encapped_serialize!(test_encapped_serialize_x25519, crate::kem::X25519HkdfSha256);
     }
 
+    #[cfg(feature = "x448")]
+    mod x448_tests {
+        use super::*;
+
+        test_encap_correctness!(test_encap_correctness_x448, crate::kem::X448HkdfSha512);
+        test_encapped_serialize!(test_encapped_serialize_x448, crate::kem::X448HkdfSha512);
+    }
+
     #[cfg(feature = "p256")]
     mod p256_tests {
         use super::*;

@@ -703,6 +703,35 @@ mod test {
         );
     }
 
+    #[cfg(all(feature = "x448", any(feature = "alloc", feature = "std")))]
+    mod x448_tests {
+        use super::*;
+
+        test_export_idempotence!(test_export_idempotence_x448, crate::kem::X448HkdfSha512);
+        test_exportonly_panics!(
+            test_exportonly_panics_x448_seal,
+            test_exportonly_panics_x448_open,
+            crate::kem::X448HkdfSha512
+        );
+        test_overflow!(test_overflow_x448, crate::kem::X448HkdfSha512);
+
+        test_ctx_correctness!(
+            test_ctx_correctness_aes128_x448,
+            AesGcm128,
+            crate::kem::X448HkdfSha512
+        );
+        test_ctx_correctness!(
+            test_ctx_correctness_aes256_x448,
+            AesGcm256,
+            crate::kem::X448HkdfSha512
+        );
+        test_ctx_correctness!(
+            test_ctx_correctness_chacha_x448,
+            ChaCha20Poly1305,
+            crate::kem::X448HkdfSha512
+        );
+    }
+
     #[cfg(all(feature = "p256", any(feature = "alloc", feature = "std")))]
     mod p256_tests {
         use super::*;

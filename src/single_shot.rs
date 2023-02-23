@@ -151,7 +151,7 @@ mod test {
     use super::*;
     use crate::{
         aead::ChaCha20Poly1305,
-        kdf::{HkdfSha256, HkdfSha384},
+        kdf::HkdfSha256,
         kem::Kem as KemTrait,
         op_mode::{OpModeR, OpModeS, PskBundle},
         test_util::gen_rand_buf,
@@ -233,6 +233,14 @@ mod test {
         crate::kem::x25519_hkdfsha256::X25519HkdfSha256
     );
 
+    #[cfg(feature = "x448")]
+    test_single_shot_correctness!(
+        test_single_shot_correctness_x448,
+        ChaCha20Poly1305,
+        crate::kdf::HkdfSha512,
+        crate::kem::x448_hkdfsha512::X448HkdfSha512
+    );
+
     #[cfg(feature = "p256")]
     test_single_shot_correctness!(
         test_single_shot_correctness_p256,
@@ -245,7 +253,7 @@ mod test {
     test_single_shot_correctness!(
         test_single_shot_correctness_p384,
         ChaCha20Poly1305,
-        HkdfSha384,
+        crate::kdf::HkdfSha384,
         crate::kem::dhp384_hkdfsha384::DhP384HkdfSha384
     );
 }

@@ -359,6 +359,17 @@ impl_dhkem!(
     "Represents DHKEM(X25519, HKDF-SHA256)"
 );
 
+// Implement DHKEM(X448, HKDF-SHA512)
+#[cfg(feature = "x448")]
+impl_dhkem!(
+    x448_hkdfsha512,
+    X448HkdfSha512,
+    crate::dhkex::x448::X448,
+    crate::kdf::HkdfSha512,
+    0x0021,
+    "Represents DHKEM(X448, HKDF-SHA512)"
+);
+
 // Implement DHKEM(P-256, HKDF-SHA256)
 #[cfg(feature = "p256")]
 impl_dhkem!(
