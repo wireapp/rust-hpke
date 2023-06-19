@@ -50,8 +50,6 @@ impl Serializable for PublicKey {
 }
 
 impl Deserializable for PublicKey {
-    // Dalek lets us convert [u8; 56] to pubkeys. Assuming the input length is correct, this
-    // conversion is infallible, so no ValidationErrors are raised.
     fn from_bytes(encoded: &[u8]) -> Result<Self, HpkeError> {
         // Pubkeys must be 56 bytes
         enforce_equal_len(Self::OutputSize::to_usize(), encoded.len())?;
@@ -90,7 +88,6 @@ impl Serializable for PrivateKey {
     // RFC 9180 §7.1 Table 2: Nsk of DHKEM(X448, HKDF-SHA512) is 56
     type OutputSize = typenum::U56;
 
-    // Dalek lets us convert scalars to [u8; 32]
     fn to_bytes(&self) -> GenericArray<u8, typenum::U56> {
         GenericArray::clone_from_slice(&self.0.to_bytes())
     }
