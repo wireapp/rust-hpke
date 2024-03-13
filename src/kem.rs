@@ -20,9 +20,6 @@ pub(crate) mod xyber768d00;
 #[cfg(feature = "xyber768d00")]
 pub use xyber768d00::*;
 
-#[cfg(feature = "serde_impls")]
-use serde::{Deserialize as SerdeDeserialize, Serialize as SerdeSerialize};
-
 /// Represents authenticated encryption functionality
 pub trait Kem: Sized {
     /// The key exchange's public key type. If you want to generate a keypair, see

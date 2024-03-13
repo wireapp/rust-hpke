@@ -122,7 +122,6 @@ impl Deserializable for PrivateKey {
 
 /// An X25519-Kyber768 public key. This holds an X25519 public key and a Kyber768 public key.
 #[derive(Debug, PartialEq, Eq, Clone)]
-#[cfg_attr(feature = "serde_impls", derive(serde::Serialize, serde::Deserialize))]
 #[doc(hidden)]
 pub struct PublicKey {
     x: <X25519HkdfSha256 as KemTrait>::PublicKey,
@@ -131,7 +130,6 @@ pub struct PublicKey {
 
 /// An X25519-Kyber768 private key. This holds an X25519 private key and a Kyber768 private key.
 #[derive(Clone)]
-#[cfg_attr(feature = "serde_impls", derive(serde::Serialize, serde::Deserialize))]
 #[doc(hidden)]
 pub struct PrivateKey {
     x: <X25519HkdfSha256 as KemTrait>::PrivateKey,
@@ -141,7 +139,6 @@ pub struct PrivateKey {
 /// Holds the content of an encapsulated secret. This is what the receiver uses to derive the
 /// shared secret. Since this is a hybrid KEM, it holds a DH encapped key and a Kyber encapped key.
 #[derive(Clone)]
-#[cfg_attr(feature = "serde_impls", derive(serde::Serialize, serde::Deserialize))]
 #[doc(hidden)]
 pub struct EncappedKey {
     x: <X25519HkdfSha256 as KemTrait>::EncappedKey,

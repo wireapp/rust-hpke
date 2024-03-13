@@ -22,8 +22,6 @@ p384 = ["dep:p384"]
 p256 = ["dep:p256"]
 p521 = ["dep:p521"]
 xyber768d00 = ["dep:pqc_kyber", "x25519"]
-# Include serde Serialize/Deserialize impls for all relevant types
-serde_impls = ["dep:serde", "generic-array/serde"]
 # Include allocating methods like open() and seal()
 alloc = []
 # Includes an implementation of `std::error::Error` for `HpkeError`. Also does what `alloc` does.
@@ -46,7 +44,6 @@ sha2 = { version = "0.10", default-features = false }
 subtle = { version = "2.5", default-features = false }
 x25519-dalek = { version = "2", default-features = false, features = ["static_secrets"], optional = true }
 zeroize = { version = "1", default-features = false, features = ["zeroize_derive"] }
-serde = { version = "1.0", default-features = false, optional = true, features = ["derive"] }
 
 [dependencies.pqc_kyber]
 # Be careful when switching to upstream, as the latest version might not have
